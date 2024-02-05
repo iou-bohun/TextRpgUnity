@@ -29,18 +29,27 @@ public class ShopUiSlot : MonoBehaviour
         icon.sprite = item.icon;
         itemName.text = item.name;
         itemStat.text = item.EquipableType == EquipableType.Weapon ? "ATK"+item.ATKValue.ToString() : "DEF" + item.DEFValue .ToString();
-        cost.text = item.cost.ToString();
+        cost.text = "Gold : "+item.cost.ToString();
     }
 
     public void BuyItem()
     {
         if(thisItem != null)
         {
-            Inventory.Instance.AddItem(thisItem);
+            if(Bank.instance.CurrentBalance >= thisItem.cost)
+            {
+                Bank.instance.Withdraw(thisItem.cost);
+                Inventory.Instance.AddItem(thisItem);
+            }
+            else
+            {
+                Debug.Log("골드가 부족합니다. ");
+            }
         }
         else
         {
-            Debug.Log("상품 준비중");
+            Debug.Log("상품 준비중!");
         }
+        
     }
 }

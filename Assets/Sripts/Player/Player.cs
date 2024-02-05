@@ -52,13 +52,14 @@ public class Player : MonoBehaviour
     public Stat stat;
     public Condition exp;
 
-    [Header("Text")]
+    [Header("Texts")]
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] public TextMeshProUGUI expText;
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI defText;
     [SerializeField] private TextMeshProUGUI atkText;
+    [SerializeField] private TextMeshProUGUI goldText;
 
     public Sprite testicon;
 
@@ -85,6 +86,8 @@ public class Player : MonoBehaviour
         hpText.text = stat.Health.ToString();
         defText.text = stat.Def.ToString();
         atkText.text = stat.Atk.ToString();
+        goldText.text = Bank.instance.CurrentBalance.ToString();
+
     }
 
 }
