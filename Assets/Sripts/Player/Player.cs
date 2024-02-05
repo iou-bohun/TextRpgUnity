@@ -47,8 +47,6 @@ public class Condition
 
 public class Player : MonoBehaviour
 {
-    public Action OnUIUpdateEvent;
-
     public Stat stat;
     public Condition exp;
 
@@ -63,14 +61,11 @@ public class Player : MonoBehaviour
 
     public Sprite testicon;
 
-    private void Awake()
-    {
-        OnUIUpdateEvent += SetTexts;
-    }
     private void Start()
     {
+        UIController.instance.OnUIUpdateEvent += SetTexts;
         exp.curValue = exp.startValue;
-        OnUIUpdateEvent?.Invoke();
+        UIController.instance.CallUiUpdateEvent();
     }
 
     private void Update()
@@ -87,7 +82,6 @@ public class Player : MonoBehaviour
         defText.text = stat.Def.ToString();
         atkText.text = stat.Atk.ToString();
         goldText.text = Bank.instance.CurrentBalance.ToString();
-
     }
 
 }

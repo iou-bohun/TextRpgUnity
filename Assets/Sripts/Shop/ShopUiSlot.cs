@@ -40,6 +40,7 @@ public class ShopUiSlot : MonoBehaviour
             {
                 Bank.instance.Withdraw(thisItem.cost);
                 Inventory.Instance.AddItem(thisItem);
+                UIController.instance.CallUiUpdateEvent();
             }
             else
             {
