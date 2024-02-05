@@ -20,10 +20,12 @@ public enum EquipableType
 public class ItemData : ScriptableObject
 {
     [Header("Info")]
-    public string name;
+    public string itemName;
+    public string description;
     public ItemType type;
     public Sprite icon;
     public int cost;
+
 
     [Header("Equipable")]
     public EquipableType EquipableType;
@@ -32,7 +34,7 @@ public class ItemData : ScriptableObject
 
     public ItemData(string name, Sprite icon)
     {
-        this.name = name;
+        this.itemName = name;
         this.icon = icon;
     }
 }

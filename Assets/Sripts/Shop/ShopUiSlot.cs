@@ -27,7 +27,7 @@ public class ShopUiSlot : MonoBehaviour
         thisItem = item;
         icon.gameObject.SetActive(true);
         icon.sprite = item.icon;
-        itemName.text = item.name;
+        itemName.text = item.itemName;
         itemStat.text = item.EquipableType == EquipableType.Weapon ? "ATK"+item.ATKValue.ToString() : "DEF" + item.DEFValue .ToString();
         cost.text = "Gold : "+item.cost.ToString();
     }

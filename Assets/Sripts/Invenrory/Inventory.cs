@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 
 public class ItemSlot
@@ -19,6 +21,12 @@ public class Inventory : MonoBehaviour
     public ItemSlot[] slots; //이름은 slot인데 사실상 가지고있을수 있는 아이템공간
 
     public GameObject inventoryWindow;
+
+    [Header("Item Info Window")]
+    public GameObject itemInfo;
+    [SerializeField] TextMeshProUGUI itemInfoName;
+    [SerializeField] TextMeshProUGUI itemInfoDescription;
+
     private Player player;
 
     private void Awake()
@@ -90,4 +98,17 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void UpdateItemInfo(ItemData item)
+    {
+        itemInfo.SetActive(true);
+        itemInfoName.text = item.itemName;
+        itemInfoDescription.text = item.description;
+    }
+
+    public void ClearItemInfo()
+    {
+        itemInfo.SetActive(false);
+        itemInfoName.text = null;
+        itemInfoDescription.text = null;
+    }
 }

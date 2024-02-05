@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShopSlot
 {
     public ItemData item;
-    public int quantity;
+    public bool isSold = false;
 }
 
 public class Shop : MonoBehaviour
@@ -14,6 +14,7 @@ public class Shop : MonoBehaviour
     public GameObject shopWindow;
 
     public ShopUiSlot[] uiSlots;
+    public ShopSlot[] slots;
     public ItemData[] items; //상정의 아이템들
 
     private void Awake()
@@ -27,6 +28,7 @@ public class Shop : MonoBehaviour
 
         for(int i = 0; i< uiSlots.Length; i++)
         {
+
             uiSlots[i].index = i;
             uiSlots[i].Clear();
         }
