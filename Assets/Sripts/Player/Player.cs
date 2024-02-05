@@ -75,11 +75,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         exp.slider.value = exp.GetPercentage();
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            Inventory.Instance.AddItem(new ItemData("TestSword",testicon));
-        }
     }
 
     private void SetTexts()

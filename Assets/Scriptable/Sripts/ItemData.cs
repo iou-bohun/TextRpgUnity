@@ -23,6 +23,7 @@ public class ItemData : ScriptableObject
     public string name;
     public ItemType type;
     public Sprite icon;
+    public int cost;
 
     [Header("Equipable")]
     public EquipableType EquipableType;
