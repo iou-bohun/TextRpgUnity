@@ -8,7 +8,8 @@ public class ItemSlotUI : MonoBehaviour
     public int index;
     public Image icon;
     private ItemData itemData;
-
+    public bool isEquiped;
+    public Outline outline;
 
     public void Clear()
     {
@@ -32,5 +33,10 @@ public class ItemSlotUI : MonoBehaviour
     public void MouseExit()
     {
         Inventory.Instance.ClearItemInfo();
+    }
+
+    public void OnClick()
+    {
+        Inventory.Instance.SelectedItem(index);
     }
 }

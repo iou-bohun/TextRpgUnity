@@ -84,4 +84,15 @@ public class Player : MonoBehaviour
         goldText.text = Bank.instance.CurrentBalance.ToString();
     }
 
+    public void AddStat(ItemData item)
+    {
+        this.stat.Atk += item.ATKValue;
+        this.stat.Def += item.DEFValue;
+    }
+
+    public void RemoveStat(ItemData item)
+    {
+        this.stat.Atk -= item.ATKValue;
+        this.stat.Def -= item.DEFValue;
+    }
 }

@@ -20,6 +20,10 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public ItemSlot[] slots; //이름은 slot인데 사실상 가지고있을수 있는 아이템공간
 
+    public int curSelectedItemIndex;
+    private ItemSlot curEquipWeapon;
+    private ItemSlot curEquipArmor;
+
     public GameObject inventoryWindow;
 
     [Header("Item Info Window")]
@@ -110,5 +114,42 @@ public class Inventory : MonoBehaviour
         itemInfo.SetActive(false);
         itemInfoName.text = null;
         itemInfoDescription.text = null;
+    }
+
+    public void SelectedItem(int index)
+    {
+        if (slots[index].item == null)
+        {
+            return;
+        }
+        else
+        {
+            curSelectedItemIndex = index;
+            if (!uiSlots[curSelectedItemIndex].isEquiped)
+            {
+                EquipItem();
+            }
+            else
+            {
+                UnEquipItem();
+            }
+            
+        }
+    }
+
+    void EquipItem()
+    {
+        uiSlots[curSelectedItemIndex].isEquiped = true;
+        player.AddStat(slots[curSelectedItemIndex].item);
+        UIController.instance.OnUIUpdateEvent();
+        UpdateUI();
+    }
+
+    void UnEquipItem()
+    {
+        uiSlots[curSelectedItemIndex].isEquiped = false;
+        player.RemoveStat(slots[curSelectedItemIndex].item);
+        UIController.instance.OnUIUpdateEvent();
+        UpdateUI();
     }
 }

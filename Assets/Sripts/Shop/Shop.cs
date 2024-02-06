@@ -14,7 +14,6 @@ public class Shop : MonoBehaviour
     public GameObject shopWindow;
 
     public ShopUiSlot[] uiSlots;
-    public ShopSlot[] slots;
     public ItemData[] items; //상정의 아이템들
 
     private void Awake()
