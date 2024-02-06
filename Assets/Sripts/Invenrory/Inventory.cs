@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -30,6 +31,7 @@ public class Inventory : MonoBehaviour
     public GameObject itemInfo;
     [SerializeField] TextMeshProUGUI itemInfoName;
     [SerializeField] TextMeshProUGUI itemInfoDescription;
+    [SerializeField] TextMeshProUGUI itemStatInfo;
 
     private Player player;
 
@@ -107,6 +109,7 @@ public class Inventory : MonoBehaviour
         itemInfo.SetActive(true);
         itemInfoName.text = item.itemName;
         itemInfoDescription.text = item.description;
+        itemStatInfo.text = "+ " + ( item.EquipableType == EquipableType.Weapon ? "ATK " + item.ATKValue.ToString() : "DEF " + item.DEFValue.ToString());
     }
 
     public void ClearItemInfo()
@@ -114,6 +117,7 @@ public class Inventory : MonoBehaviour
         itemInfo.SetActive(false);
         itemInfoName.text = null;
         itemInfoDescription.text = null;
+        itemStatInfo.text = null;
     }
 
     public void SelectedItem(int index)

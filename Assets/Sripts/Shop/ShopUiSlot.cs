@@ -11,6 +11,7 @@ public class ShopUiSlot : MonoBehaviour
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemStat;
     public TextMeshProUGUI cost;
+    private bool isSlod;
 
     public ItemData thisItem;
 
@@ -20,6 +21,7 @@ public class ShopUiSlot : MonoBehaviour
         itemName.text = null;
         itemStat.text = null;
         cost.text = null;
+        isSlod = false;
     }
 
     public void Set(ItemData item)
@@ -36,8 +38,10 @@ public class ShopUiSlot : MonoBehaviour
     {
         if(thisItem != null)
         {
-            if(Bank.instance.CurrentBalance >= thisItem.cost)
+            if(Bank.instance.CurrentBalance >= thisItem.cost && isSlod == false)
             {
+                isSlod = true;
+                icon.sprite = null;
                 Bank.instance.Withdraw(thisItem.cost);
                 Inventory.Instance.AddItem(thisItem);
                 UIController.instance.CallUiUpdateEvent();
